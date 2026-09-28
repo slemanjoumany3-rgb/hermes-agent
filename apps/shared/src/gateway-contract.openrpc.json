@@ -30671,7 +30671,6 @@
             "type": "string"
           },
           "hidden": {
-            "default": true,
             "title": "Hidden",
             "type": "boolean"
           },
@@ -30689,7 +30688,8 @@
           }
         },
         "required": [
-          "session_id"
+          "session_id",
+          "hidden"
         ],
         "title": "SessionSetHiddenParams",
         "type": "object"
