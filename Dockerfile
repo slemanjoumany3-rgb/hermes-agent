@@ -490,7 +490,11 @@ ENV PATH="/opt/hermes/bin:/opt/hermes/.venv/bin:/opt/data/.local/bin:${PATH}"
 # them after all builds; never relax permissions on mutable PM/home state.
 RUN mkdir -p /opt/data && chmod 0644 /opt/hermes/tools/facts.json && \
     rm -f /opt/hermes/.venv/.lock /opt/hermes/pm-runtime/.lock
-VOLUME [ "/opt/data" ]
+# NOTE: /opt/data is intended to be a mutable, persistent data directory.
+# Railway does not support the Docker VOLUME instruction during build
+# validation, so it has been removed here. To persist /opt/data across
+# deploys, configure a Railway Volume mounted at /opt/data via the
+# service's Settings > Volumes in the Railway dashboard.
 
 # The image ENTRYPOINT is a tiny dispatcher rather than `/init` directly.
 # When the image really owns PID 1 (normal Docker / Podman), the dispatcher
