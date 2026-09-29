@@ -529,4 +529,4 @@ RUN mkdir -p /opt/data && chmod 0644 /opt/hermes/tools/facts.json && \
 # wrapper-as-ENTRYPOINT, leading-dash args like `--version` would be
 # intercepted by /init's POSIX shell.
 ENTRYPOINT [ "/opt/hermes/docker/entrypoint-dispatch.sh" ]
-CMD [ ]
+CMD ["hermes", "--gateway"]
